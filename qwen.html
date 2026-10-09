@@ -1,0 +1,2186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us — Synvora IT</title>
+    <link href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.8/index.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #1A1A1A;
+            --bg-darker: #111111;
+            --bg-white: #FFFFFF;
+            --bg-light: #F7F7F7;
+            --text-dark: #1A1A1A;
+            --text-light: #FFFFFF;
+            --text-muted: #6B6B6B;
+            --accent: #2D4DD4;
+            --accent-hover: #1E3AB8;
+            --accent-light: #EEF1FE;
+            --border: #E8E8E8;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --radius-2xl: 24px;
+            --radius-full: 9999px;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
+            --shadow-xl: 0 16px 48px rgba(0,0,0,0.16);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --container: 1280px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-white);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img { display: block; max-width: 100%; }
+        a { text-decoration: none; color: inherit; }
+        button { font-family: inherit; cursor: pointer; border: none; background: none; }
+        ul { list-style: none; }
+
+        .container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        *:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all var(--transition);
+        }
+
+        .nav.scrolled {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 14px 0;
+        }
+
+        .nav-inner {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-light);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .nav-logo {
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
+
+        .nav-link {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.7);
+            transition: color var(--transition);
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--text-light);
+        }
+
+        .nav-cta {
+            background: var(--text-light);
+            color: var(--text-dark) !important;
+            padding: 10px 24px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.88rem;
+            transition: all var(--transition);
+        }
+
+        .nav-cta:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-mobile-toggle {
+            display: none;
+            width: 44px;
+            height: 44px;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .nav-mobile-toggle span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: white;
+            border-radius: 2px;
+            transition: all var(--transition);
+        }
+
+        .nav-mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-dark);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .nav-mobile-menu.open {
+            display: flex;
+        }
+
+        .nav-mobile-menu a {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .nav-mobile-close {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        /* ===== HERO SLIDER ===== */
+        .hero-slider {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            max-height: 1000px;
+            overflow: hidden;
+            background: var(--bg-dark);
+        }
+
+        .slider-track {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease, visibility 1s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .slide-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .slide-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.08);
+            transition: transform 8s ease;
+        }
+
+        .slide.active .slide-bg img {
+            transform: scale(1);
+        }
+
+        .slide-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(17,17,17,0.92) 0%, rgba(17,17,17,0.7) 50%, rgba(17,17,17,0.4) 100%);
+            z-index: 1;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            padding: 0 32px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .slide-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: var(--text-light);
+            padding: 8px 20px;
+            border-radius: var(--radius-full);
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 28px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease 0.3s;
+        }
+
+        .slide.active .slide-badge {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #4ADE80;
+            border-radius: 50%;
+        }
+
+        .slide h1 {
+            font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            color: var(--text-light);
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.4s;
+        }
+
+        .slide.active .slide h1 {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide h1 .accent {
+            color: var(--accent);
+            position: relative;
+        }
+
+        .slide h1 .accent::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent);
+            opacity: 0.4;
+            border-radius: 2px;
+        }
+
+        .slide-desc {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 36px;
+            max-width: 540px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.5s;
+        }
+
+        .slide.active .slide-desc {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease 0.6s;
+        }
+
+        .slide.active .slide-actions {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: var(--radius-full);
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all var(--transition);
+        }
+
+        .slide-btn-primary {
+            background: var(--accent);
+            color: var(--text-light);
+        }
+
+        .slide-btn-primary:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(45,77,212,0.4);
+        }
+
+        .slide-btn-secondary {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--text-light);
+        }
+
+        .slide-btn-secondary:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Slider Controls */
+        .slider-controls {
+            position: absolute;
+            bottom: 48px;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            padding: 0 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: var(--container);
+            margin: 0 auto;
+        }
+
+        .slider-dots {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .slider-dot {
+            width: 40px;
+            height: 3px;
+            background: rgba(255,255,255,0.25);
+            border-radius: 2px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all var(--transition);
+        }
+
+        .slider-dot:hover {
+            background: rgba(255,255,255,0.4);
+        }
+
+        .slider-dot.active {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .slider-dot.active::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: var(--accent);
+            border-radius: 2px;
+            animation: dotProgress 6s linear forwards;
+        }
+
+        @keyframes dotProgress {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+
+        .slider-arrows {
+            display: flex;
+            gap: 12px;
+        }
+
+        .slider-arrow {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-full);
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition);
+        }
+
+        .slider-arrow:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .slider-arrow:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        /* Slide Counter */
+        .slider-counter {
+            position: absolute;
+            top: 50%;
+            right: 32px;
+            transform: translateY(-50%);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .slider-counter-line {
+            width: 1px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slider-counter-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--accent);
+            transition: height 0.5s ease;
+        }
+
+        .slider-counter-num {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .slider-counter-num .current {
+            color: var(--accent);
+        }
+
+        /* Scroll Indicator */
+        .hero-scroll {
+            position: absolute;
+            bottom: 48px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: none;
+        }
+
+        @media (max-width: 1023px) {
+            .slider-counter { display: none; }
+            .hero-scroll { display: flex; flex-direction: column; align-items: center; gap: 8px; color: rgba(255,255,255,0.4); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
+        }
+
+        .hero-scroll-line {
+            width: 1px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-scroll-line::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            animation: scrollDown 2s ease infinite;
+        }
+
+        @keyframes scrollDown {
+            0% { top: -100%; }
+            100% { top: 100%; }
+        }
+
+        /* ===== SERVICES OVERVIEW ===== */
+        .services-overview {
+            padding: 100px 0;
+            background: var(--bg-white);
+        }
+
+        .services-overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr 1.2fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        .services-list { padding-top: 16px; }
+
+        .services-list-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 24px;
+        }
+
+        .services-list ul {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .services-list li {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            padding-left: 20px;
+            position: relative;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .services-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--border);
+            border-radius: 50%;
+            transition: all var(--transition);
+        }
+
+        .services-list li:hover {
+            color: var(--accent);
+            padding-left: 24px;
+        }
+
+        .services-list li:hover::before {
+            background: var(--accent);
+            width: 8px;
+            height: 8px;
+        }
+
+        .services-list li.active {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .services-list li.active::before {
+            background: var(--accent);
+        }
+
+        .featured-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            transition: all var(--transition);
+        }
+
+        .featured-card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .featured-card-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 8px;
+        }
+
+        .featured-card-sublabel {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .featured-card h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .featured-card p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+        }
+
+        .featured-card-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            padding: 12px 24px;
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all var(--transition);
+        }
+
+        .featured-card-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .cta-card {
+            background: var(--bg-dark);
+            border-radius: var(--radius-xl);
+            padding: 48px 40px;
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+            transition: all var(--transition);
+        }
+
+        .cta-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 300px;
+            height: 300px;
+            background: var(--accent);
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .cta-card h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .cta-card p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .cta-card-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--text-light);
+            color: var(--text-dark);
+            padding: 12px 24px;
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all var(--transition);
+            position: relative;
+        }
+
+        .cta-card-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ===== SHOWCASE ===== */
+        .showcase {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+
+        .showcase-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .showcase-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .showcase-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: var(--radius-full);
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .showcase-nav {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .showcase-nav-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-full);
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all var(--transition);
+            color: var(--text-dark);
+        }
+
+        .showcase-nav-btn:hover {
+            background: var(--bg-dark);
+            color: var(--text-light);
+            border-color: var(--bg-dark);
+        }
+
+        .showcase-scroll {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding-bottom: 16px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .showcase-scroll::-webkit-scrollbar { display: none; }
+
+        .showcase-card {
+            min-width: 280px;
+            max-width: 280px;
+            background: var(--bg-white);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            scroll-snap-align: start;
+            transition: all var(--transition);
+            border: 1px solid var(--border);
+        }
+
+        .showcase-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+
+        .showcase-card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: var(--bg-light);
+        }
+
+        .showcase-card-body { padding: 24px; }
+
+        .showcase-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .showcase-card p {
+            font-size: 0.82rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .showcase-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .showcase-card-meta-dot {
+            width: 4px;
+            height: 4px;
+            background: var(--border);
+            border-radius: 50%;
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about-section {
+            padding: 100px 0;
+            background: var(--bg-white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-visual {
+            position: relative;
+            border-radius: var(--radius-2xl);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: var(--bg-light);
+        }
+
+        .about-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-visual-badge {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            padding: 16px 24px;
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+        }
+
+        .about-visual-badge .num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .about-visual-badge .label {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.6);
+            margin-top: 4px;
+        }
+
+        .about-content .section-eyebrow {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 16px;
+        }
+
+        .about-content h2 {
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin-bottom: 24px;
+        }
+
+        .about-content p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+
+        .about-stat-num {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+        }
+
+        .about-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* ===== VALUES ===== */
+        .values-section {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+
+        .values-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 64px;
+        }
+
+        .values-header .section-eyebrow {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 16px;
+        }
+
+        .values-header h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            margin-bottom: 16px;
+        }
+
+        .values-header p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .value-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 36px 28px;
+            transition: all var(--transition);
+        }
+
+        .value-card:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .value-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--accent-light);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            transition: all var(--transition);
+        }
+
+        .value-card:hover .value-icon {
+            background: var(--accent);
+        }
+
+        .value-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--accent);
+            transition: color var(--transition);
+        }
+
+        .value-card:hover .value-icon svg {
+            color: var(--text-light);
+        }
+
+        .value-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .value-card p {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+        }
+
+        /* ===== PROCESS ===== */
+        .process-section {
+            padding: 100px 0;
+            background: var(--bg-white);
+        }
+
+        .process-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 64px;
+        }
+
+        .process-header .section-eyebrow {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 16px;
+        }
+
+        .process-header h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            margin-bottom: 16px;
+        }
+
+        .process-header p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            position: relative;
+        }
+
+        .process-grid::before {
+            content: '';
+            position: absolute;
+            top: 36px;
+            left: 12.5%;
+            right: 12.5%;
+            height: 2px;
+            background: var(--border);
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .process-step-num {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: var(--bg-white);
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--text-muted);
+            margin: 0 auto 24px;
+            position: relative;
+            z-index: 2;
+            transition: all var(--transition);
+        }
+
+        .process-step:hover .process-step-num {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: var(--accent-light);
+            transform: scale(1.1);
+        }
+
+        .process-step h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .process-step p {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+        }
+
+        /* ===== FINAL CTA ===== */
+        .final-cta {
+            padding: 100px 0;
+            background: var(--bg-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta-bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .final-cta-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.06;
+        }
+
+        .final-cta-circle-1 { width: 500px; height: 500px; top: -200px; right: -100px; }
+        .final-cta-circle-2 { width: 300px; height: 300px; bottom: -100px; left: -50px; }
+
+        .final-cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .final-cta-content h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: var(--text-light);
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+            margin-bottom: 20px;
+        }
+
+        .final-cta-content p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 40px;
+        }
+
+        .final-cta-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: var(--text-light);
+            color: var(--text-dark);
+            padding: 14px 28px;
+            border-radius: var(--radius-full);
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all var(--transition);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline-light {
+            background: transparent;
+            color: var(--text-light);
+            border: 1.5px solid rgba(255,255,255,0.25);
+            padding: 14px 28px;
+            border-radius: var(--radius-full);
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all var(--transition);
+        }
+
+        .btn-outline-light:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.5);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--bg-darker);
+            padding: 80px 0 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            padding-bottom: 64px;
+        }
+
+        .footer-brand p {
+            font-size: 0.88rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.45);
+            margin-top: 16px;
+            max-width: 300px;
+        }
+
+        .footer-brand .nav-brand { color: var(--text-light); }
+
+        .footer-col h4 {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.9);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul li { margin-bottom: 12px; }
+
+        .footer-col ul a {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.45);
+            transition: color var(--transition);
+        }
+
+        .footer-col ul a:hover { color: var(--text-light); }
+
+        .footer-social {
+            display: flex;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-full);
+            background: rgba(255,255,255,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.5);
+            transition: all var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--accent);
+            color: var(--text-light);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding: 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-bottom p {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.35);
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-bottom-links a {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.35);
+            transition: color var(--transition);
+        }
+
+        .footer-bottom-links a:hover { color: rgba(255,255,255,0.7); }
+
+        /* ===== REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1023px) {
+            .nav-links { display: none; }
+            .nav-mobile-toggle { display: flex; }
+
+            .services-overview-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding-left: 48px;
+            }
+
+            .process-grid::before {
+                top: 0;
+                bottom: 0;
+                left: 35px;
+                right: auto;
+                width: 2px;
+                height: auto;
+            }
+
+            .process-step {
+                text-align: left;
+                padding: 0;
+            }
+
+            .process-step-num {
+                position: absolute;
+                left: -48px;
+                top: 0;
+                margin: 0;
+                width: 60px;
+                height: 60px;
+                font-size: 1rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .slider-controls {
+                bottom: 32px;
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container { padding: 0 20px; }
+            .nav-inner { padding: 0 20px; }
+
+            .hero-slider {
+                min-height: 600px;
+            }
+
+            .slide-content { padding: 0 20px; }
+
+            .services-overview,
+            .showcase,
+            .about-section,
+            .values-section,
+            .process-section,
+            .final-cta {
+                padding: 64px 0;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .showcase-card {
+                min-width: 260px;
+                max-width: 260px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .final-cta-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .final-cta-actions .btn-white,
+            .final-cta-actions .btn-outline-light {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+
+            .slider-arrows { display: none; }
+
+            .slider-dots {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav" id="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="#" class="nav-brand" aria-label="Synvora IT Home">
+                <div class="nav-logo">S</div>
+                Synvora IT
+            </a>
+            <div class="nav-links" role="menubar">
+                <a href="#" class="nav-link" role="menuitem">Home</a>
+                <a href="#" class="nav-link" role="menuitem">Services</a>
+                <a href="#" class="nav-link" role="menuitem">Case Study</a>
+                <a href="#" class="nav-link active" role="menuitem" aria-current="page">About Us</a>
+                <a href="#" class="nav-link" role="menuitem">Contact</a>
+                <a href="#" class="nav-cta" role="menuitem">Let's Talk</a>
+            </div>
+            <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="nav-mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation">
+        <button class="nav-mobile-close" id="mobileClose" aria-label="Close menu">✕</button>
+        <a href="#">Home</a>
+        <a href="#">Services</a>
+        <a href="#">Case Study</a>
+        <a href="#" class="active">About Us</a>
+        <a href="#">Contact</a>
+        <a href="#" style="background: var(--accent); color: white; padding: 14px 32px; border-radius: 50px; margin-top: 16px;">Let's Talk</a>
+    </div>
+
+    <!-- Hero Slider -->
+    <section class="hero-slider" id="heroSlider" aria-roledescription="carousel" aria-label="About Synvora IT">
+        <div class="slider-track">
+            <!-- Slide 1 -->
+            <div class="slide active" role="group" aria-roledescription="slide" aria-label="1 of 4">
+                <div class="slide-bg">
+                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&h=900&fit=crop" alt="Professional workspace">
+                </div>
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <div class="slide-badge">About Synvora IT</div>
+                    <h1>We Build Digital Solutions That <span class="accent">Matter</span>.</h1>
+                    <p class="slide-desc">Synvora IT helps businesses turn complex challenges into meaningful digital solutions through thoughtful design, modern engineering, and a commitment to long-term success.</p>
+                    <div class="slide-actions">
+                        <a href="#services" class="slide-btn slide-btn-primary">
+                            Explore Our Services
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                        <a href="#about" class="slide-btn slide-btn-secondary">Learn More About Us</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="slide" role="group" aria-roledescription="slide" aria-label="2 of 4">
+                <div class="slide-bg">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=1600&h=900&fit=crop" alt="Team collaboration">
+                </div>
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <div class="slide-badge">Our Expertise</div>
+                    <h1>Turning Ideas Into <span class="accent">Digital</span> Solutions.</h1>
+                    <p class="slide-desc">From custom software to cloud transformation, we deliver comprehensive technology services designed to help your business thrive in the digital landscape.</p>
+                    <div class="slide-actions">
+                        <a href="#services" class="slide-btn slide-btn-primary">
+                            View Our Services
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                        <a href="#showcase" class="slide-btn slide-btn-secondary">See Our Work</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="slide" role="group" aria-roledescription="slide" aria-label="3 of 4">
+                <div class="slide-bg">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&h=900&fit=crop" alt="Team working together">
+                </div>
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <div class="slide-badge">Team & Culture</div>
+                    <h1>Great Work Starts With Great <span class="accent">Collaboration</span>.</h1>
+                    <p class="slide-desc">We've built a culture that values creativity, collaboration, continuous learning, and thoughtful problem-solving. Our team brings together diverse perspectives to tackle complex challenges.</p>
+                    <div class="slide-actions">
+                        <a href="#values" class="slide-btn slide-btn-primary">
+                            Our Values
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                        <a href="#process" class="slide-btn slide-btn-secondary">Our Process</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="slide" role="group" aria-roledescription="slide" aria-label="4 of 4">
+                <div class="slide-bg">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&h=900&fit=crop" alt="Technology and innovation">
+                </div>
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <div class="slide-badge">Our Vision</div>
+                    <h1>Technology That Moves Your <span class="accent">Business</span> Forward.</h1>
+                    <p class="slide-desc">To become a trusted technology partner known for innovation, meaningful collaboration, and lasting digital impact. Let's build something meaningful together.</p>
+                    <div class="slide-actions">
+                        <a href="#" class="slide-btn slide-btn-primary">
+                            Start a Conversation
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </a>
+                        <a href="#" class="slide-btn slide-btn-secondary">Schedule a Call</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slider Counter -->
+        <div class="slider-counter" aria-hidden="true">
+            <div class="slider-counter-num"><span class="current" id="currentSlide">01</span> / <span id="totalSlides">04</span></div>
+            <div class="slider-counter-line" id="counterLine"></div>
+        </div>
+
+        <!-- Slider Controls -->
+        <div class="slider-controls">
+            <div class="slider-dots" role="tablist" aria-label="Slide navigation">
+                <button class="slider-dot active" role="tab" aria-selected="true" aria-label="Go to slide 1" data-slide="0"></button>
+                <button class="slider-dot" role="tab" aria-selected="false" aria-label="Go to slide 2" data-slide="1"></button>
+                <button class="slider-dot" role="tab" aria-selected="false" aria-label="Go to slide 3" data-slide="2"></button>
+                <button class="slider-dot" role="tab" aria-selected="false" aria-label="Go to slide 4" data-slide="3"></button>
+            </div>
+            <div class="slider-arrows">
+                <button class="slider-arrow" id="prevSlide" aria-label="Previous slide">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <button class="slider-arrow" id="nextSlide" aria-label="Next slide">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="hero-scroll" aria-hidden="true">
+            <div class="hero-scroll-line"></div>
+            Scroll
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="services-overview" id="services">
+        <div class="container">
+            <div class="services-overview-grid">
+                <div class="services-list reveal">
+                    <div class="services-list-label">Our Services</div>
+                    <ul>
+                        <li class="active">Strategy</li>
+                        <li>Content Creation</li>
+                        <li>SEO</li>
+                        <li>Design</li>
+                        <li>Analytics</li>
+                        <li>Email Marketing</li>
+                        <li>Web Development</li>
+                        <li>Mobile Apps</li>
+                    </ul>
+                </div>
+                <div class="featured-card reveal reveal-delay-1">
+                    <div class="featured-card-label">Featured Service</div>
+                    <div class="featured-card-sublabel">Innovation-driven development</div>
+                    <h3>Custom Software Development</h3>
+                    <p>We build tailored software solutions that address your unique business challenges. From concept to deployment, our team delivers scalable, maintainable, and high-performance applications.</p>
+                    <a href="#" class="featured-card-btn">
+                        Learn More
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+                <div class="cta-card reveal reveal-delay-2">
+                    <h3>Let's grow your Brand Together!</h3>
+                    <p>Have an idea, a challenge, or a digital product in mind? Let's discuss how Synvora IT can help you take the next step toward meaningful digital transformation.</p>
+                    <a href="#" class="cta-card-btn">
+                        Get in Touch
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showcase -->
+    <section class="showcase" id="showcase">
+        <div class="container">
+            <div class="showcase-header reveal">
+                <h2 class="showcase-title">
+                    What We Do Together
+                    <span class="showcase-badge">
+                        <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M8 2v12M2 8h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                        Our Expertise
+                    </span>
+                </h2>
+                <div class="showcase-nav">
+                    <button class="showcase-nav-btn" id="scrollLeft" aria-label="Scroll left">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+                    </button>
+                    <button class="showcase-nav-btn" id="scrollRight" aria-label="Scroll right">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="showcase-scroll" id="showcaseScroll">
+                <div class="showcase-card">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="Web Development" class="showcase-card-img">
+                    <div class="showcase-card-body">
+                        <h4>Web Application Development</h4>
+                        <p>Scalable, performant web apps built with modern frameworks and best practices.</p>
+                        <div class="showcase-card-meta">
+                            <span>Development</span>
+                            <span class="showcase-card-meta-dot"></span>
+                            <span>Full Stack</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase-card">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop" alt="Mobile Apps" class="showcase-card-img">
+                    <div class="showcase-card-body">
+                        <h4>Mobile App Development</h4>
+                        <p>Native and cross-platform mobile apps that deliver seamless experiences.</p>
+                        <div class="showcase-card-meta">
+                            <span>Mobile</span>
+                            <span class="showcase-card-meta-dot"></span>
+                            <span>iOS & Android</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase-card">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b8?w=400&h=300&fit=crop" alt="UI/UX Design" class="showcase-card-img">
+                    <div class="showcase-card-body">
+                        <h4>UI/UX Design</h4>
+                        <p>User-centered design that creates intuitive and engaging digital experiences.</p>
+                        <div class="showcase-card-meta">
+                            <span>Design</span>
+                            <span class="showcase-card-meta-dot"></span>
+                            <span>User Research</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase-card">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&h=300&fit=crop" alt="Cloud Solutions" class="showcase-card-img">
+                    <div class="showcase-card-body">
+                        <h4>Cloud & Digital Transformation</h4>
+                        <p>Cloud infrastructure and migration strategies to modernize operations.</p>
+                        <div class="showcase-card-meta">
+                            <span>Cloud</span>
+                            <span class="showcase-card-meta-dot"></span>
+                            <span>AWS / Azure</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" alt="Analytics" class="showcase-card-img">
+                    <div class="showcase-card-body">
+                        <h4>Data Analytics & Insights</h4>
+                        <p>Transform raw data into actionable insights with advanced analytics solutions.</p>
+                        <div class="showcase-card-meta">
+                            <span>Analytics</span>
+                            <span class="showcase-card-meta-dot"></span>
+                            <span>Business Intelligence</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase-card">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&h=300&fit=crop" alt="IT Consulting" class="showcase-card-img">
+                    <div class="showcase-card-body">
+                        <h4>IT Consulting</h4>
+                        <p>Strategic technology guidance to help you make informed decisions.</p>
+                        <div class="showcase-card-meta">
+                            <span>Consulting</span>
+                            <span class="showcase-card-meta-dot"></span>
+                            <span>Strategy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-visual reveal">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop" alt="Team collaboration">
+                    <div class="about-visual-badge">
+                        <div class="num">5+</div>
+                        <div class="label">Years of Excellence</div>
+                    </div>
+                </div>
+                <div class="about-content reveal reveal-delay-1">
+                    <div class="section-eyebrow">Who We Are</div>
+                    <h2>Building Practical Digital Solutions That Help Businesses Grow</h2>
+                    <p>At Synvora IT, we believe technology should solve real problems, create better experiences, and open new possibilities. We bring together strategic thinking, user-focused design, and modern development practices.</p>
+                    <p>Our approach is rooted in understanding — understanding your business, your users, and the challenges you face. This allows us to deliver solutions that are not just technically sound, but genuinely useful.</p>
+                    <div class="about-stats">
+                        <div>
+                            <div class="about-stat-num" data-count="50">0</div>
+                            <div class="about-stat-label">Projects Delivered</div>
+                        </div>
+                        <div>
+                            <div class="about-stat-num" data-count="30">0</div>
+                            <div class="about-stat-label">Happy Clients</div>
+                        </div>
+                        <div>
+                            <div class="about-stat-num" data-count="10">0</div>
+                            <div class="about-stat-label">Industries Served</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section" id="values">
+        <div class="container">
+            <div class="values-header reveal">
+                <div class="section-eyebrow">Our Values</div>
+                <h2>The Principles Behind Our Work</h2>
+                <p>Core values that shape our culture, guide our decisions, and define how we work with every client.</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card reveal reveal-delay-1">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>Integrity</h3>
+                    <p>Communicate honestly and act responsibly in every interaction and decision.</p>
+                </div>
+                <div class="value-card reveal reveal-delay-2">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <h3>Curiosity</h3>
+                    <p>Keep learning, questioning, and exploring better approaches to every challenge.</p>
+                </div>
+                <div class="value-card reveal reveal-delay-3">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h3>Ownership</h3>
+                    <p>Take responsibility for quality and outcomes in everything we deliver.</p>
+                </div>
+                <div class="value-card reveal reveal-delay-4">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>Partnership</h3>
+                    <p>Build lasting relationships through collaboration, trust, and shared success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section" id="process">
+        <div class="container">
+            <div class="process-header reveal">
+                <div class="section-eyebrow">Our Process</div>
+                <h2>From Challenge to Meaningful Impact</h2>
+                <p>A structured yet flexible approach that ensures every project delivers real value.</p>
+            </div>
+            <div class="process-grid reveal">
+                <div class="process-step">
+                    <div class="process-step-num">01</div>
+                    <h3>Discover</h3>
+                    <p>Understand the business, users, challenges, and objectives through research.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-num">02</div>
+                    <h3>Strategize</h3>
+                    <p>Define priorities, scope, technical direction, and clear success criteria.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-num">03</div>
+                    <h3>Design & Build</h3>
+                    <p>Translate ideas into intuitive experiences and reliable digital solutions.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-step-num">04</div>
+                    <h3>Improve & Evolve</h3>
+                    <p>Validate outcomes, gather feedback, and identify opportunities for growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="final-cta-bg">
+            <div class="final-cta-circle final-cta-circle-1"></div>
+            <div class="final-cta-circle final-cta-circle-2"></div>
+        </div>
+        <div class="container">
+            <div class="final-cta-content reveal">
+                <h2>Let's Build Something Meaningful Together.</h2>
+                <p>Have an idea, a challenge, or a digital product in mind? Let's discuss how Synvora IT can help you take the next step.</p>
+                <div class="final-cta-actions">
+                    <a href="#" class="btn-white">
+                        Start a Conversation
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <a href="#" class="btn-outline-light">Explore Our Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="nav-brand">
+                        <div class="nav-logo">S</div>
+                        Synvora IT
+                    </a>
+                    <p>Empowering businesses through thoughtful technology solutions. Your trusted partner in digital transformation.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+                        <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                        <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                        <a href="#" aria-label="GitHub"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Case Study</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Custom Software</a></li>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Mobile Apps</a></li>
+                        <li><a href="#">UI/UX Design</a></li>
+                        <li><a href="#">Cloud Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="#">Get in Touch</a></li>
+                        <li><a href="#">Schedule a Call</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Synvora IT. All Rights Reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== HERO SLIDER =====
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        const prevBtn = document.getElementById('prevSlide');
+        const nextBtn = document.getElementById('nextSlide');
+        const currentSlideEl = document.getElementById('currentSlide');
+        const counterLine = document.getElementById('counterLine');
+        const slider = document.getElementById('heroSlider');
+        const totalSlides = slides.length;
+
+        let currentIndex = 0;
+        let autoplayInterval;
+        let autoplayDelay = 6000;
+        let isPaused = false;
+
+        function goToSlide(index) {
+            slides[currentIndex].classList.remove('active');
+            dots[currentIndex].classList.remove('active');
+            dots[currentIndex].setAttribute('aria-selected', 'false');
+
+            currentIndex = (index + totalSlides) % totalSlides;
+
+            slides[currentIndex].classList.add('active');
+            dots[currentIndex].classList.add('active');
+            dots[currentIndex].setAttribute('aria-selected', 'true');
+
+            // Update counter
+            currentSlideEl.textContent = String(currentIndex + 1).padStart(2, '0');
+
+            // Reset counter line animation
+            counterLine.style.transition = 'none';
+            counterLine.style.height = '0%';
+            setTimeout(() => {
+                counterLine.style.transition = 'height 6s linear';
+                counterLine.style.height = '100%';
+            }, 50);
+
+            // Restart autoplay
+            resetAutoplay();
+        }
+
+        function nextSlide() {
+            goToSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            goToSlide(currentIndex - 1);
+        }
+
+        function startAutoplay() {
+            autoplayInterval = setInterval(() => {
+                if (!isPaused) nextSlide();
+            }, autoplayDelay);
+        }
+
+        function resetAutoplay() {
+            clearInterval(autoplayInterval);
+            startAutoplay();
+        }
+
+        // Event listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => goToSlide(index));
+        });
+
+        // Pause on hover
+        slider.addEventListener('mouseenter', () => { isPaused = true; });
+        slider.addEventListener('mouseleave', () => { isPaused = false; });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+        });
+
+        // Touch/Swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        slider.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            isPaused = true;
+        }, { passive: true });
+
+        slider.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) nextSlide();
+                else prevSlide();
+            }
+            isPaused = false;
+        }, { passive: true });
+
+        // Initialize
+        goToSlide(0);
+        startAutoplay();
+
+        // ===== NAVIGATION =====
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        }, { passive: true });
+
+        // Mobile menu
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileClose = document.getElementById('mobileClose');
+
+        mobileToggle.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+
+        mobileClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // ===== SHOWCASE SCROLL =====
+        const showcaseScroll = document.getElementById('showcaseScroll');
+        const scrollLeftBtn = document.getElementById('scrollLeft');
+        const scrollRightBtn = document.getElementById('scrollRight');
+
+        scrollLeftBtn.addEventListener('click', () => {
+            showcaseScroll.scrollBy({ left: -304, behavior: 'smooth' });
+        });
+
+        scrollRightBtn.addEventListener('click', () => {
+            showcaseScroll.scrollBy({ left: 304, behavior: 'smooth' });
+        });
+
+        // ===== SCROLL REVEAL =====
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (!prefersReducedMotion) {
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+        } else {
+            document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+        }
+
+        // ===== COUNTER ANIMATION =====
+        if (!prefersReducedMotion) {
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const target = parseInt(el.getAttribute('data-count'));
+                        const duration = 2000;
+                        const startTime = performance.now();
+
+                        function update(currentTime) {
+                            const elapsed = currentTime - startTime;
+                            const progress = Math.min(elapsed / duration, 1);
+                            const eased = 1 - Math.pow(1 - progress, 3);
+                            el.textContent = Math.floor(eased * target) + '+';
+                            if (progress < 1) requestAnimationFrame(update);
+                            else el.textContent = target + '+';
+                        }
+
+                        requestAnimationFrame(update);
+                        counterObserver.unobserve(el);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+        } else {
+            document.querySelectorAll('[data-count]').forEach(el => {
+                el.textContent = el.getAttribute('data-count') + '+';
+            });
+        }
+
+        // Services list interaction
+        document.querySelectorAll('.services-list li').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.services-list li').forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
